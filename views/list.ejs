@@ -21,7 +21,6 @@
         <div class="box joint-header-todo">
             <header id="heading">
                 <h1>To-Do List</h1>
-                <span class="date-center"><%= new Date().toLocaleDateString('en-US', { weekday: 'long', day: 'numeric', month: 'long' }) %></span>
             </header>
             <main class="fullpage-main">
                 <div class="todo-center"> 
@@ -35,7 +34,7 @@
                         </select>
                     </form>
                     <form class="item" id="todoForm" action="/" method="POST" onsubmit="return validateForm()">
-                        <input type="text" name="ele1" placeholder="New To-Do" required autocomplete="off">
+                        <input type="text" name="ele1" placeholder="New To-Do" required>
                         <select name="priority" class="priority-select">
                             <option value="high">High</option>
                             <option value="medium">Medium</option>
@@ -43,14 +42,10 @@
                         </select>
                         <button class="submit" type="submit">+</button>
                     </form>
-                    <% if (ejes.length === 0) { %>
-                        <p style="color:gray;">No to-dos found.</p>
-                    <% } %>
                     <% ejes.forEach(function(item, index){ %>
                     <div class="item">
                         <div style="flex:1; text-align:center;">
                             <b><%= item.name %></b>
-                            <span style="font-size:0.9em; color:gray;">[<%= item.priority.charAt(0).toUpperCase() + item.priority.slice(1) %>]</span>
                         </div>
                         <form action="/delete" method="POST">
                             <input type="hidden" name="index" value="<%= index %>">
@@ -67,6 +62,8 @@
     </div>
     <footer class="fullpage-footer">
         <p>Copyright &copy;2025 Daniel</p>
+    </footer>
+</body>
     </footer>
 </body>
 </html>

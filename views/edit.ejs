@@ -13,18 +13,16 @@
                 <h1>Edit To-Do</h1>
             </header>
             <main class="edit-main">
-                <div class="edit-form-container">
-                    <form id="editForm" action="/edit" method="POST" onsubmit="return validateEditForm()" class="edit-form">
-                        <input type="hidden" name="itemIndex" value="<%= itemIndex %>">
-                        <input type="text" name="updatedItem" value="<%= currentItem.name %>"  required autofocus autocomplete="off" class="edit-input">
-                        <select name="updatedPriority" class="priority-select edit-select">
-                            <option value="high" <%= currentItem.priority === 'high' ? 'selected' : '' %>>High</option>
-                            <option value="medium" <%= currentItem.priority === 'medium' ? 'selected' : '' %>>Medium</option>
-                            <option value="low" <%= currentItem.priority === 'low' ? 'selected' : '' %>>Low</option>
+                    <form id="editForm" action="/edit" method="POST" onsubmit="return validateEditForm()">
+                        <input type="hidden" name="index" value="<%= itemindex %>">
+                        <input type="text" name="item" value="<%= ogitem.name %>"  required autofocus>
+                        <select name="priority" class="priority-select">
+                            <option value="high" <%= ogitem.priority === 'high' ? 'selected' : '' %>>High</option>
+                            <option value="medium" <%= ogitem.priority === 'medium' ? 'selected' : '' %>>Medium</option>
+                            <option value="low" <%= ogitem.priority === 'low' ? 'selected' : '' %>>Low</option>
                         </select>
-                        <button class="edit edit-btn" type="submit">Save Changes</button>
+                        <button class="edit" type="submit">Save Changes</button>
                     </form>
-                </div>
             </main>
         </div>
     </div>
