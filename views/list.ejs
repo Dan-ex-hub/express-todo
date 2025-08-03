@@ -45,7 +45,7 @@
                     <% ejes.forEach(function(item, index){ %>
                     <div class="item">
                         <div style="flex:1; text-align:center;">
-                            <b><%= item.name %></b>
+                            <b><%= item.name %></b> <small>[<%= item.priority %>]</small>
                         </div>
                         <form action="/delete" method="POST">
                             <input type="hidden" name="index" value="<%= index %>">
@@ -64,6 +64,6 @@
         <p>Copyright &copy;2025 Daniel</p>
     </footer>
 </body>
-    </footer>
+</html>
 </body>
 </html>

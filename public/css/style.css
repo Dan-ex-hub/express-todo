@@ -12,7 +12,9 @@
     align-items: center;
     justify-content: center;
 }
-
+small{
+    color: #888;
+}
 .joint-container {
     flex: 1;
     display: flex;
