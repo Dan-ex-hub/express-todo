@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Edit To-Do Item</title>
     <link rel="stylesheet" href="/css/style.css">
 </head>
+
 <body class="edit-body">
     <div class="joint-container">
         <div class="box joint-header-todo">
@@ -13,16 +15,16 @@
                 <h1>Edit To-Do</h1>
             </header>
             <main class="edit-main">
-                    <form id="editForm" action="/edit" method="POST" onsubmit="return validateEditForm()">
-                        <input type="hidden" name="index" value="<%= itemindex %>">
-                        <input type="text" name="item" value="<%= ogitem.name %>"  required autofocus>
-                        <select name="priority" class="priority-select">
-                            <option value="high" <%= ogitem.priority === 'high' ? 'selected' : '' %>>High</option>
-                            <option value="medium" <%= ogitem.priority === 'medium' ? 'selected' : '' %>>Medium</option>
-                            <option value="low" <%= ogitem.priority === 'low' ? 'selected' : '' %>>Low</option>
-                        </select>
-                        <button class="edit" type="submit">Save Changes</button>
-                    </form>
+                <form action="/edit/<%= itemindex %>?_method=PUT" method="POST" onsubmit="return validateEditForm()">
+                    <input type="hidden" name="index" value="<%= itemindex %>">
+                    <input type="text" name="item" value="<%= ogitem.name %>" required autofocus>
+                    <select name="priority" class="priority-select">
+                        <option value="high" <%=ogitem.priority==='high' ? 'selected' : '' %>>High</option>
+                        <option value="medium" <%=ogitem.priority==='medium' ? 'selected' : '' %>>Medium</option>
+                        <option value="low" <%=ogitem.priority==='low' ? 'selected' : '' %>>Low</option>
+                    </select>
+                    <button class="edit" type="submit">Save Changes</button>
+                </form>
             </main>
         </div>
     </div>
@@ -30,4 +32,5 @@
         <p>Copyright &copy;2025 Daniel</p>
     </footer>
 </body>
+
 </html>

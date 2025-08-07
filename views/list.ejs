@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -16,6 +17,7 @@
         }
     </script>
 </head>
+
 <body class="fullpage-body">
     <div class="center-container joint-container">
         <div class="box joint-header-todo">
@@ -23,14 +25,15 @@
                 <h1>To-Do List</h1>
             </header>
             <main class="fullpage-main">
-                <div class="todo-center"> 
+                <div class="todo-center">
                     <form id="filterForm" action="/" method="GET">
                         <label for="priority">Filter by Priority:</label>
-                        <select name="priority" id="priority" class="priority-select" onchange="document.getElementById('filterForm').submit()">
-                            <option value="all" <%= filter === 'all' ? 'selected' : '' %>>All</option>
-                            <option value="high" <%= filter === 'high' ? 'selected' : '' %>>High</option>
-                            <option value="medium" <%= filter === 'medium' ? 'selected' : '' %>>Medium</option>
-                            <option value="low" <%= filter === 'low' ? 'selected' : '' %>>Low</option>
+                        <select name="priority" id="priority" class="priority-select"
+                            onchange="document.getElementById('filterForm').submit()">
+                            <option value="all" <%=filter==='all' ? 'selected' : '' %>>All</option>
+                            <option value="high" <%=filter==='high' ? 'selected' : '' %>>High</option>
+                            <option value="medium" <%=filter==='medium' ? 'selected' : '' %>>Medium</option>
+                            <option value="low" <%=filter==='low' ? 'selected' : '' %>>Low</option>
                         </select>
                     </form>
                     <form class="item" id="todoForm" action="/" method="POST" onsubmit="return validateForm()">
@@ -43,19 +46,20 @@
                         <button class="submit" type="submit">+</button>
                     </form>
                     <% ejes.forEach(function(item, index){ %>
-                    <div class="item">
-                        <div style="flex:1; text-align:center;">
-                            <b><%= item.name %></b> <small>[<%= item.priority %>]</small>
+                        <div class="item">
+                            <div style="flex:1; text-align:center;">
+                                <b>
+                                    <%= item.name %>
+                                </b> <small>[<%= item.priority %>]</small>
+                            </div>
+                            <form action="/delete/<%= index %>?_method=DELETE" method="POST">
+                                <button type="submit" class="delete">Delete</button>
+                            </form>
+                            <form action="/edit/<%= index %>" method="GET">
+                                <button type="submit" class="edit">Edit</button>
+                            </form>
                         </div>
-                        <form action="/delete" method="POST">
-                            <input type="hidden" name="index" value="<%= index %>">
-                            <button type="submit" class="delete">Delete</button>
-                        </form>
-                        <form action="/edit/<%= index %>" method="GET">
-                            <button type="submit" class="edit">Edit</button>
-                        </form>
-                    </div>
-                    <% }); %>
+                        <% }); %>
                 </div>
             </main>
         </div>
@@ -64,6 +68,8 @@
         <p>Copyright &copy;2025 Daniel</p>
     </footer>
 </body>
+
 </html>
 </body>
+
 </html>
